@@ -20,6 +20,7 @@ set('writable_dirs', ['runtime']);
  */
 task('deploy', [
     'deploy:prepare',
+    'deploy:clean_failed',
     'deploy:release',
     'deploy:update_code',
     'deploy:vendors',

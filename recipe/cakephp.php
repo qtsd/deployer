@@ -45,6 +45,7 @@ task('deploy:run_migrations', function () {
  */
 task('deploy', [
     'deploy:prepare',
+    'deploy:clean_failed',
     'deploy:release',
     'deploy:update_code',
     'deploy:shared',

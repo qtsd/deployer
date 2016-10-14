@@ -19,6 +19,7 @@ set('shared_dirs', [
  */
 task('deploy', [
     'deploy:prepare',
+    'deploy:clean_failed',
     'deploy:release',
     'deploy:update_code',
     'deploy:vendors',

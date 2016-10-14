@@ -133,6 +133,7 @@ after('deploy:update_code', 'deploy:clear_controllers');
  */
 task('deploy', [
     'deploy:prepare',
+    'deploy:clean_failed',
     'deploy:release',
     'deploy:update_code',
     'deploy:create_cache_dir',

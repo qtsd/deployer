@@ -17,6 +17,7 @@ env('typo3_webroot', 'Web');
  */
 task('deploy', [
     'deploy:prepare',
+    'deploy:clean_failed',
     'deploy:release',
     'deploy:update_code',
     'deploy:shared',

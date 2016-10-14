@@ -87,9 +87,17 @@ option('revision', null, \Symfony\Component\Console\Input\InputOption::VALUE_OPT
 
 
 /**
+ * Clean failed release.
+ */
+task('deploy:clean_failed', function () {
+    run("cd {{deploy_path}} && if [ -h release ]; then rm -r `readlink release` && rm release; fi");
+})->desc('Check and delete failed release');
+
+
+/**
  * Rollback to previous release.
  */
-task('rollback', function () {
+task('rollback:process', function () {
     $releases = env('releases_list');
 
     if (isset($releases[1])) {
@@ -107,7 +115,12 @@ task('rollback', function () {
     } else {
         writeln("<comment>No more releases you can revert to.</comment>");
     }
-})->desc('Rollback to previous release');
+})->desc('Process the rollback');
+
+task('rollback', [
+    'deploy:clean_failed',
+    'rollback:process'
+])->desc('Rollback to previous release');
 
 
 /**

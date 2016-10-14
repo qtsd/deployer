@@ -20,6 +20,7 @@ set('writable_dirs', ['application/cache', 'application/logs']);
  */
 task('deploy', [
     'deploy:prepare',
+    'deploy:clean_failed',
     'deploy:release',
     'deploy:update_code',
     'deploy:vendors',
